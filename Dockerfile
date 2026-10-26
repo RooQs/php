@@ -43,4 +43,7 @@ RUN set -eux; \
         c-client krb5-libs libpq libxml2 libzip; \
     rm -rf /tmp/pear /tmp/* /var/cache/apk/*
 
-RUN php -m | grep -Ei '^(bcmath|gd|gettext|imap|mcrypt|mysqli|Zend OPcache|pcntl|pdo_mysql|pdo_pgsql|shmop|soap|sockets|sysvsem|xmlrpc|zip)$' | wc -l | grep -qx 16
+RUN set -eux; \
+    for e in bcmath gd gettext imap mcrypt mysqli "Zend OPcache" pcntl pdo_mysql pdo_pgsql shmop soap sockets sysvsem xmlrpc zip; do \
+        php -m | grep -qix "$e" || { echo "MISSING: $e"; exit 1; }; \
+    done
