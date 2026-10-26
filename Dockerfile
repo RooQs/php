@@ -39,7 +39,7 @@ RUN set -eux; \
     docker-php-ext-enable mcrypt opcache; \
     apk add --no-cache --virtual .ext-runtime-deps \
         freetype libjpeg-turbo libpng gettext libmcrypt \
-        imap krb5-libs libpq libxml2 libzip; \
+        c-client krb5-libs libpq libxml2 libzip; \
     apk del --no-network .ext-build-deps; \
     rm -rf /tmp/pear /tmp/* /var/cache/apk/*
 
