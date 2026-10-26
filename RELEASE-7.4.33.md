@@ -19,6 +19,9 @@
 
 ## 本项目新增扩展（16 个）
 
+本版本修复的问题：imap 扩展在加载时缺少 `libc-client.so.1`，原因是运行时依赖 `c-client` 被误删。现已在删除构建依赖之后单独安装 `c-client`，imap 可正常加载。
+
+
 | 扩展 | 安装方式 / 依赖 |
 |---|---|
 | bcmath | docker-php-ext-install |
