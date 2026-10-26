@@ -37,10 +37,10 @@ RUN set -eux; \
     ; \
     pecl install mcrypt-1.0.4; \
     docker-php-ext-enable mcrypt opcache; \
+    apk del --no-network .ext-build-deps; \
     apk add --no-cache \
         freetype libjpeg-turbo libpng gettext libmcrypt \
         c-client krb5-libs libpq libxml2 libzip; \
-    apk del --no-network .ext-build-deps; \
     rm -rf /tmp/pear /tmp/* /var/cache/apk/*
 
 RUN php -m | grep -Ei '^(bcmath|gd|gettext|imap|mcrypt|mysqli|Zend OPcache|pcntl|pdo_mysql|pdo_pgsql|shmop|soap|sockets|sysvsem|xmlrpc|zip)$' | wc -l | grep -qx 16
