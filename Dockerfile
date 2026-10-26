@@ -37,7 +37,7 @@ RUN set -eux; \
     ; \
     pecl install mcrypt-1.0.4; \
     docker-php-ext-enable mcrypt opcache; \
-    apk add --no-cache --virtual .ext-runtime-deps \
+    apk add --no-cache \
         freetype libjpeg-turbo libpng gettext libmcrypt \
         c-client krb5-libs libpq libxml2 libzip; \
     apk del --no-network .ext-build-deps; \
